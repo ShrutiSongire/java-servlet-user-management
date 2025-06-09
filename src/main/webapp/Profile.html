@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Employee Details Form</h2>
+
+    <form action="submitform" method="post">
+
+        <p>1. Employee ID:<br>
+        <input type="text" name="empId" required></p>
+
+        <p>2. Employee Name:<br>
+        <input type="text" name="empName" required></p>
+
+        <p>3. Email:<br>
+        <input type="email" name="empEmail" required></p>
+
+        <p>4. Phone Number:<br>
+        <input type="tel" name="empPhone" required></p>
+
+        <p>5. Department:<br>
+        <input type="text" name="empDept" required></p>
+
+        <p>6. Position:<br>
+        <input type="text" name="empPosition" required></p>
+
+        <p>7. Salary:<br>
+        <input type="number" name="empSalary" required></p>
+
+        <p>8. Date of Birth:<br>
+        <input type="date" name="empDOB" required></p>
+
+        <p>9. Gender:<br>
+        <select name="empGender" required>
+            <option value="">--Select--</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select></p>
+
+        <p>10. Address:<br>
+        <textarea name="empAddress" rows="3" cols="30" required></textarea></p>
+
+        <p>11. City:<br>
+        <input type="text" name="empCity" required></p>
+
+        <p>12. State:<br>
+        <input type="text" name="empState" required></p>
+
+        <p>13. Pin Code:<br>
+        <input type="text" name="empPin" required></p>
+
+        <p>14. Joining Date:<br>
+        <input type="date" name="empJoinDate" required></p>
+
+        <p>15. Qualification:<br>
+        <input type="text" name="empQualification" required></p>
+
+        <input type="submit" value="Submit" required>
+
+    </form>
+
+</body>
+</html>
