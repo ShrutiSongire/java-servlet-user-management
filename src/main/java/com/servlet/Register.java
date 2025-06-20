@@ -1,5 +1,6 @@
 package com.servlet;
 
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,7 +24,8 @@ public class Register extends HttpServlet {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/Register?useSSL=false", "root", "shru3022");
+            Connection c = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/Register?useSSL=false", "root", "shru3022");
 
             PreparedStatement ps = c.prepareStatement(
                 "INSERT INTO users(username, email, password, confirm_password) VALUES (?, ?, ?, ?)");

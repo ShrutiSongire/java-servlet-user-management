@@ -1,60 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .login-container {
-            background-color: white;
-            padding: 30px 40px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-        }
-        .login-container h2 {
-            margin-bottom: 20px;
-        }
-        .login-container input[type="text"],
-        .login-container input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0 15px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .login-container input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .login-container input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #fff; }
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+  </style>
 </head>
 <body>
 
-    <form class="login-container" action="loginServlet" method="post">
-        <h2>Login</h2>
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required>
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="w-10 h-10 border-4 border-t-blue-500 border-gray-300 rounded-full animate-spin"></div>
+  </div>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
+  <!-- Login Form -->
+  <form class="bg-white p-8 rounded shadow w-80 mx-auto mt-32" action="loginServlet" method="post">
+    <h2 class="text-center text-2xl mb-4 font-bold">Login</h2>
+    <label for="username" class="block mb-2">Username</label>
+    <input type="text" id="username" name="username" class="w-full p-2 border rounded mb-4" required>
 
-        <input type="submit" value="Login">
-    </form>
+    <label for="password" class="block mb-2">Password</label>
+    <input type="password" id="password" name="password" class="w-full p-2 border rounded mb-4" required>
 
+    <!-- Login Link -->
+    <a href="home.html" class="w-full bg-blue-500 text-white p-2 rounded text-center block hover:bg-blue-600 mb-2">Login</a>
+    <!-- Sign Up Link -->
+    <a href="Register.html" class="w-full block bg-green-500 text-white p-2 rounded text-center hover:bg-green-600">Sign Up</a>
+  </form>
+
+  <script>
+    // Wait for the page to fully load
+    window.addEventListener('load', () => {
+      // hide loader after 2 seconds
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+      }, 2000); // wait 2s
+    });
+  </script>
 </body>
 </html>

@@ -22,7 +22,7 @@ public class Login extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username= req.getParameter("username");
-		String passwd= req.getParameter("password");
+		String password= req.getParameter("password");
 		
 		PrintWriter out= resp.getWriter();
 	
@@ -32,31 +32,33 @@ public class Login extends HttpServlet{
 		
 		
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection c= DriverManager.getConnection("jdbc:mysql://localhost:3306/Register?useSSL=false","root","shru3022");
-			PreparedStatement pstm = c.prepareStatement("select * from users where username=? AND password=?");
-			pstm.setString(1, username);
-			pstm.setString(2, passwd);
-			
-			ResultSet rs=pstm.executeQuery();
-			
-			if(rs.next()) {
-				System.out.println("Login Successfully");
-				out.println("Login Successfully");
-				RequestDispatcher rd= req.getRequestDispatcher("/Profile.html");
-				rd.forward(req, resp);
-			}else {
-				System.out.println("Invalid credential");
-				out.println("Invalid credential");
-				RequestDispatcher rd= req.getRequestDispatcher("/Login.html");
-				rd.include(req, resp);
-				
-			}
-			
+		    Class.forName("com.mysql.cj.jdbc.Driver");
+		    Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/Register?useSSL=false", "root", "shru3022");
+
+		    System.out.println("Input Username: " + username);
+		    System.out.println("Input Password: " + password);
+
+		    PreparedStatement pstm = c.prepareStatement("SELECT * FROM users WHERE username=? AND password=?");
+		    pstm.setString(1, username);
+		    pstm.setString(2, password);
+
+		    ResultSet rs = pstm.executeQuery();
+
+		    if (rs.next()) {
+		        System.out.println("Login Successful");
+		        out.println("Login Successful");
+		        RequestDispatcher rd = req.getRequestDispatcher("/home.html");
+		        rd.forward(req, resp);
+		    } else {
+		        System.out.println("Invalid Credentials");
+		        out.println("Invalid Credentials");
+		        RequestDispatcher rd = req.getRequestDispatcher("/Login.html");
+		        rd.include(req, resp);
+		    }
 		} catch (Exception e) {
-			
-			
+		    e.printStackTrace(); // Debug here
 		}
+
 		
 //		if(username.equals("shru@gmail.com") && passwd.equals("shru@123")) {
 //			System.out.println("Login Successfuly");
